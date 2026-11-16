@@ -12,6 +12,10 @@ This `guide/` folder came from GitHub: an AI agent added the files, and DuoNotes
 ## How this folder got here
 In DuoNotes, **From GitHub** (beside New Folder) lets you pick a repository and one of its folders; DuoNotes makes a matching folder and brings its files down. **Link to GitHub…** on an existing folder does the same for a folder you already have. Either way, DuoNotes says what will move before anything does.
 
+## The Tester Checklist
+While you're testing, the card at the top of DuoNotes' library walks you through setting up, the things worth
+trying, and where to send feedback. Each step ticks itself off when it happens.
+
 ## Your first two minutes
 - [ ] Open **02 Dictation** and try saying one sentence.
 - [ ] Open **03 Try this checklist** and tick a box.
