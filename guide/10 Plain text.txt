@@ -1,0 +1,9 @@
+A plain text file.
+
+DuoNotes can display .txt and .log files, but they are read-only on the phone.
+Only .md files are editable notes.
+
+Use .md for a note you want to edit, dictate into, or tick checkboxes in.
+Use .txt for a simple reference or log you only need to read.
+
+Try it: compare this file with 03 Try this checklist.md.

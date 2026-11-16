@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant P as Phone
+    participant G as GitHub
+    participant A as Agent
+    A->>G: push guide/ files
+    P->>G: pull (on open, every minute)
+    G-->>P: new and changed files
+    P->>G: push your notes and ticks
+    A->>G: read your changes

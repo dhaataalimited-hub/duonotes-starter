@@ -1,0 +1,7 @@
+{
+  "_notice": "Illustrative example only. This is not your live DuoNotes configuration or an editable settings file.",
+  "folder": "guide",
+  "sync": { "onOpen": true, "everyMinute": true, "afterSave": "5s", "forcePush": false },
+  "limits": { "maxFileMB": 25, "recentlyDeletedDays": 30 },
+  "notes": { "frontMatter": ["id"], "headingOnlyForChosenTitles": true }
+}

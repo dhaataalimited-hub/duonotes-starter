@@ -1,0 +1,61 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planner board</title>
+<style>
+:root{color-scheme:light dark}
+body{font:17px -apple-system,system-ui,sans-serif;margin:20px;line-height:1.45}
+h1{font-size:22px;margin:0 0 6px}p{margin:0 0 14px;opacity:.75}
+li{list-style:none;margin:8px 0;padding:10px 12px;border-radius:10px;background:rgba(127,127,127,.12);display:flex;gap:10px;align-items:center}
+input[type=checkbox]{width:22px;height:22px}
+#saved{font-size:14px;opacity:.8;margin-top:12px}
+</style></head>
+<body>
+<h1>Planner board</h1>
+<p>This is a small interactive tool made by an AI agent. Tick an item to save your progress. In DuoNotes, the state is stored beside this page as <code>05 Planner board.html.state.json</code> and can sync back to GitHub. You can also add a sticky note to the page.</p>
+<ul id="list"></ul>
+<div id="saved" role="status" aria-live="polite"></div>
+<script>
+const items = ["Link a folder to GitHub", "Dictate a note in it", "Tick a box in the checklist",
+               "Add a sticky note to this page", "Read For AI agents.md (optional, advanced)"];
+const store = window.duonotes ?? {
+  save: s => localStorage.setItem('state', JSON.stringify(s)),
+  load: () => JSON.parse(localStorage.getItem('state') ?? 'null'),
+};
+const status = document.getElementById('saved');
+let state;
+try {
+  state = store.load() ?? { done: [] };
+  if (!state || !Array.isArray(state.done)) state = { done: [] };
+} catch (error) {
+  state = { done: [] };
+  status.textContent = 'Could not load previous progress. You can try again.';
+}
+const list = document.getElementById('list');
+items.forEach((text, i) => {
+  const li = document.createElement('li');
+  const box = document.createElement('input');
+  box.type = 'checkbox';
+  box.checked = state.done.includes(i);
+  box.setAttribute('aria-label', text);
+  box.onchange = async () => {
+    const oldDone = [...state.done];
+    state.done = box.checked ? [...new Set([...state.done, i])] : state.done.filter(n => n !== i);
+    state.updated = new Date().toISOString();
+    status.textContent = 'Saving…';
+    try {
+      await Promise.resolve(store.save(state));
+      status.textContent = window.duonotes
+        ? 'Save requested at ' + new Date().toLocaleTimeString() + '. Check sync to confirm it reached GitHub.'
+        : 'Saved in this browser at ' + new Date().toLocaleTimeString();
+    } catch (error) {
+      state.done = oldDone;
+      box.checked = oldDone.includes(i);
+      status.textContent = 'Save failed. Please try again.';
+    }
+  };
+  li.append(box, document.createTextNode(text));
+  list.append(li);
+});
+if (!status.textContent) status.textContent = window.duonotes ? 'Progress saves beside this page in DuoNotes' : 'Progress saves in this browser only';
+</script>
+</body></html>
