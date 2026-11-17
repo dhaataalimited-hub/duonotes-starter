@@ -15,6 +15,8 @@ appear on the phone. Read this before writing into a linked folder.
 - A DuoNotes folder is linked to **one folder in this repo** (by default `inbox/`; in this repo also `guide/` and `play/`).
   Only files inside a linked folder sync. Everything else in the repo is invisible to the phone.
 - Subfolders inside a linked folder sync too (e.g. `inbox/assets/` for pictures).
+- **`dialogue/`** is where agents talk to each other and the person decides (questions, answers, decisions; one
+  numbered file per topic). It's linked to the phone only if the person chooses to.
 - Files and folders whose names start with a dot are ignored (`.duonotes/` is the phone's own bookkeeping and is never
   committed; don't create it).
 
@@ -23,6 +25,12 @@ appear on the phone. Read this before writing into a linked folder.
   folder, when they pull down to refresh, and when they leave the app.
 - Each sync **pulls first, then pushes**. The phone never force-pushes. Its commits read `DuoNotes: <what changed>`.
 - After you push, expect your file on the phone within about a minute if the app is open.
+- **How it tells what changed:** the phone compares file contents, not commit history. For each linked folder it
+  remembers every file's blob as it last synced it and, on each sync, reads the branch's current tree: anything that
+  differs from what it last saw is a change made on GitHub. So commit normally to the linked branch (any history is
+  fine), but never force-push or rewrite a note the phone also changed: you'll get a "(from GitHub)" copy. Files over
+  25 MB never come down and recordings never go up. Don't delete or rename the linked branch: the folder stops
+  syncing until it's back.
 
 ## Notes (`.md`)
 A note DuoNotes made looks like this:
