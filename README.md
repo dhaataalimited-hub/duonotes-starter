@@ -16,6 +16,7 @@ games, and an inbox for what you capture.
 | `inbox/` | Where your notes go. Start here. |
 | `guide/` | Short lessons: dictation, checklists, code, and file types DuoNotes can show (HTML, CSV, Mermaid, JSON, SVG). |
 | `play/` | Five small HTML games that save your progress beside them. |
+| `links/` | Save links here; ask an AI agent to "check links" and it writes back what each one is, with tags. |
 | `AGENTS.md` | Rules for AI agents (Claude, Codex, ChatGPT…) writing to your repo. Point your agent at it. |
 
 Your copy is yours: changes you make never touch this template.
