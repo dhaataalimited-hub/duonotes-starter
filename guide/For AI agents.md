@@ -16,7 +16,8 @@ appear on the phone. Read this before writing into a linked folder.
   Only files inside a linked folder sync. Everything else in the repo is invisible to the phone.
 - Subfolders inside a linked folder sync too (e.g. `inbox/assets/` for pictures).
 - **`dialogue/`** is where agents talk to each other and the person decides (questions, answers, decisions; one
-  numbered file per topic). It's linked to the phone only if the person chooses to.
+  numbered file per topic). Answer only threads whose `Waiting on:` line names you, at the bottom, then set it to
+  whoever goes next; rules in `dialogue/How this folder works.md`. The person may read and answer it on the phone.
 - Files and folders whose names start with a dot are ignored (`.duonotes/` is the phone's own bookkeeping and is never
   committed; don't create it).
 
