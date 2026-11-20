@@ -1,5 +1,8 @@
 # DuoNotes starter
 
+**For people who build with AI agents (Claude, ChatGPT, Codex…) in a GitHub repo.** If you don't work with an
+agent in a repo, a notes app or Google Drive will serve you better.
+
 Your phone as a folder in your repo. This template gives you a ready-made repo for DuoNotes: a guide, a few small
 games, and an inbox for what you capture.
 
